@@ -1,0 +1,8 @@
+<div class="justify-center items-center">
+  <h1 class="font-bold text-black">User Profile page</h1>
+  <%# <h2 class="font-italic text-6xl text-blue-500">Firstname = <%=@user.firstname%>
+  <%# <h2 class="font-italic text-6xl text-blue-500">Lastname = <%=@user.lastname%>
+  <p class="text-gray-900 leading-none"><%=@user.firstname%> <%= @user.lastname%></p>
+  <p class="text-gray-600">Account created at: <%= @user.created_at %></p>
+  <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"><%= link_to 'create Profile', new_user_path%></button>
+</div>
