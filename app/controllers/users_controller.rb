@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
+  def new
+    @user = User.new
+  end
 
   def create
     @user = User.new(user_params)
+
     if @user.save
-      redirect_to @user
+      flash[:success] = 'User created successfully!'
+      session[:user_id] = @user.id
+      redirect_to root_url
     else
       render 'new'
     end
@@ -13,8 +19,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new
-    @user = User.new
+  def edit
+    @user = User.find(params[:id])
   end
 
   def update
@@ -35,6 +41,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :password)
+    params.require(:user).permit(:firstname, :lastname, :email, :password, :password_confirmation)
   end
 end
